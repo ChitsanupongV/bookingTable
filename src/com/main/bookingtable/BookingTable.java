@@ -20,6 +20,7 @@ public class BookingTable {
     public static void main(String[] args) {
         try {
             Scanner input = new Scanner(System.in);
+            ManageTable manageTable = new ManageTable();
             int select = 0;
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             System.out.println("Restaurant Table Booking System");
@@ -78,9 +79,9 @@ public class BookingTable {
                 } catch (ClassNotFoundException e ) {
                     e.printStackTrace();
                 }
-                for(int i = 0 ; i < data.length; i++) {
-                    System.out.print(data[i] + " ");
-                }
+//                for(int i = 0 ; i < data.length; i++) {
+//                    System.out.print(data[i] + " ");
+//                }
 
 
             }
@@ -88,7 +89,9 @@ public class BookingTable {
                 Date date = new Date();
                 System.out.println("กรุณากรอกวันที (dd/MM/yyyy): ");
                 date = dateFormat.parse(input.next());
-                System.out.print(dateFormat.format(date) + " ");
+                String strDate = dateFormat.format(date);
+                int totalTable = manageTable.showTables(strDate);
+//                System.out.print(dateFormat.format(date) + " ");
             }
         } catch (Exception e) {
             e.printStackTrace();
